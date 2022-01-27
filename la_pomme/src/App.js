@@ -8,7 +8,7 @@ const App = () => {
     <Switch>
       <Route exact path='/' component={Home} />
       <Route exact path='/menu' component={Menu} />
-
+      <></>
       <Redirect to='/'></Redirect>
     </Switch>
   );
