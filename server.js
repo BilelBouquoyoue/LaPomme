@@ -60,6 +60,10 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/menu', require('./routes/api/menu'));
 app.use('/api/transaction', require('./routes/api/transaction'));
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/clients', require('./routes/api/client'));
+app.use('/api/score', require('./routes/api/score'));
+
+
 
 //Serve static asset in production
 if(process.env.NODE_ENV === 'production'){

@@ -41,7 +41,7 @@ router.post('/', [
         if (!user) {
             return res
                 .status(400)
-                .json({ errors: [{ msg: 'User is not exists' }] });
+                .json({ errors: [{ msg: 'Utilisateur inexistant' }] });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
@@ -49,7 +49,7 @@ router.post('/', [
         if (!isMatch) {
             return res
                 .status(400)
-                .json({ errors: [{ msg: 'Password does not match' }] });
+                .json({ errors: [{ msg: 'Mot de passe incorrect' }] });
         }
 
         //Return jsonwebtoken

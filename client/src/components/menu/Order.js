@@ -46,6 +46,8 @@ const Order = (
         const onSubmit = async e => {
           e.preventDefault();  
           const formData = new FormData();
+          const formData2 = new FormData();
+          const formData3 = new FormData();
 
           let totalPrice=0;
           
@@ -69,9 +71,38 @@ const Order = (
           }
           
           formData.append('total', totalPrice);
+          formData3.append('total', totalPrice);
           formData.append('adresse', adresse)
+          formData2.append('adresse', adresse)
           formData.append('telephone', telephone)
+          formData2.append('telephone', telephone)
+          formData3.append('telephone', telephone)
           formData.append('nomClient', nomClient)
+          formData2.append('nomClient', nomClient)
+
+          try {
+            const res = await axios.post('/api/clients', formData2, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+
+            const id = res.data;
+          } catch (err) {
+            console.log(err);
+          }     
+          
+          try {
+            const res = await axios.post('/api/score', formData3, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+
+            const id = res.data;
+          } catch (err) {
+            console.log(err);
+          }  
 
           try {
             const res = await axios.post('/api/transaction', formData, {

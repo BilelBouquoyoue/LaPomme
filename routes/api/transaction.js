@@ -96,7 +96,7 @@ router.post('/',
 
 });
 
-// @route    POST api/transaction/mopbile
+// @route    POST api/transaction/mobile
 // @desc     Create or update transaction on mobile application, the difference is on mobile we can insert coordinate of our target to send the food order.
 // @access   Private
 router.post('/mobile',

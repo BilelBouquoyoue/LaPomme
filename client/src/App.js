@@ -16,6 +16,9 @@ import Transactions from './components/transaction/Transactions';
 import Menu from './components/menu/MenuItem';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Print from './components/transaction/Print';
+import Fidelite from './components/fidelite/fidelite';
+import Recherche from './components/fidelite/chercheClient';
+import Recompense from './components/fidelite/recompFini';
 
 
 
@@ -54,8 +57,11 @@ const App = () => {
                                 <Route exact path="/order" component={Order} />
                                 <Route exact path="/print/:id" component={Print} />
                                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                                <PrivateRoute exact path="/recherche" component={Recherche} />
+                                <PrivateRoute exact path="/recompense/:num" component={Recompense} />
                                 <PrivateRoute exact path="/addmenu" component={AddMenu} />
                                 <PrivateRoute exact path="/editmenu/:id" component={EditMenu} />
+                                <PrivateRoute exact path="/score/:num" component={Fidelite} />
                                 <PrivateRoute exact path="/menus" component={Menus} />
                                 <PrivateRoute exact path="/transactions" component={Transactions} />
                                 <PrivateRoute exact path="/menus/:id" component={Menu} />

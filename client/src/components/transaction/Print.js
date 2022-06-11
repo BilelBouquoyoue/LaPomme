@@ -1,19 +1,29 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import propTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import Moment from 'react-moment';
 import {connect} from 'react-redux';
 import { getItems } from '../../actions/transactions';
+import axios from "axios";
 
 const Print = ({
   getItems, item:{items,loading},
   match
 }) => { 
+    const [data, setData] = useState([]);
+    const tel = useParams();
+
+    const getData = async (a) => {
+      const { data } = await axios.get(`/api/score/${a}`);
+      setData(data);
+      console.log(tel)
+    };
 
     useEffect(() => {
-        getItems(match.params.id);
-        console.log(items);
+      getItems(match.params.id);
+      getData(items.telephone);
+      console.log(items);
     }, [getItems,loading]);
 
     const goToOrder = (event) => {
@@ -34,6 +44,7 @@ const Print = ({
                 <h5 className><strong>Client : </strong>{items.nomClient}</h5>
                 <h5 className><strong>Adresse : </strong>{items.adresse}&nbsp;</h5>
                 <h5 className><strong>Numero : </strong>{items.telephone}&nbsp;</h5>
+                <h5 className><strong>Points de fidélité : </strong>{data.total}&nbsp;</h5>
             </div>
             <div className="col-lg-6 col-md-6 right">
               <img src="https://mighty-reef-58921.herokuapp.com/img/logo.png" class="logo-print" alt=""></img>

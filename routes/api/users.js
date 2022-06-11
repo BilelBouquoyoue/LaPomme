@@ -12,11 +12,11 @@ const User = require('../../models/User');
 // @desc     Register User
 // @access   Public
 router.post('/', [
-    check('name', 'Name is required')
+    check('name', 'Le nom est requis')
     .not()
     .isEmpty(),
-    check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
+    check('email', 'Veuillez entrez un email valide').isEmail(),
+    check('password', 'Veuillez entrez un mot de passe de minimum 6 caractères').isLength({ min: 6 })
 ], async(req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -30,7 +30,7 @@ router.post('/', [
         let user = await User.findOne({ email });
 
         if (user) {
-            return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+            return res.status(400).json({ errors: [{ msg: 'Utilisateur déja existant' }] });
         }
 
         const avatar = gravatar.url(email, {

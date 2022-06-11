@@ -20,6 +20,12 @@ const Navbar=({ auth: { isAuthenticated, loading }, logout })=>{
           <span className="white hide-sm">&nbsp;&nbsp;Transactions</span>
         </Link>
       </li>
+      <li className="nav-item mr-5">
+        <Link to='/recherche'>
+          <i className="white fas fa-search"></i>{''}
+          <span className="white hide-sm">&nbsp;&nbsp;Recherche</span>
+        </Link>
+      </li>
       <li className="nav-item mr-3">
         <a onClick={logout} href='/'>
           <i className="white fas fa-sign-out-alt"></i>{''}

@@ -130,17 +130,17 @@ router.delete('/:id', async(req, res) => {
         const menu = await Menu.findById(req.params.id);
 
         if (!menu) {
-            return res.status(404).json({ msg: 'Menu not found' });
+            return res.status(404).json({ msg: 'Menu non trouvé' });
         }
 
         await menu.remove();
 
-        res.json({ msg: 'Menu removed' });
+        res.json({ msg: 'Menu supprimé' });
     } catch (err) {
         console.error(err.message);
 
         if (err.kind === 'ObjectId') {
-            return res.status(404).json({ msg: 'Menu not found' });
+            return res.status(404).json({ msg: 'Menu non trouvé' });
         }
         res.status(500).send('Server Error');
     }
