@@ -1,6 +1,9 @@
 {
     "name": "resto",
     "version": "1.0.0",
+    "engines": {
+        "node": "16.15.0"
+      },
     "description": "Wisesa's Resto",
     "main": "server.js",
     "scripts": {
