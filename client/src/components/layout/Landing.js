@@ -69,10 +69,7 @@ const Landing=({login,isAuthenticated})=>{
                         <h2 className="bold">DES PLATS AU TOP</h2>
                     </div>
 
-                    <div className="row content d-flex flex-row-reverse">
-                        <div className="col-lg-6 center-sm left" data-aos="fade-left">
-                            <img className="img-subhero" src="https://mighty-reef-58921.herokuapp.com/img/hero_bapak.png" />
-                        </div>
+                    <div className="row content">
                         <div className="col-lg-6 left-sm d-flex align-items-center">
                             <div data-aos="fade-right">
                                 <p className="black">
@@ -81,10 +78,12 @@ const Landing=({login,isAuthenticated})=>{
                                     Nous mettons un point d'honneur à maintenir une hygiène irréprochable.
                                 </p>
                                 <p className="black">
-                                    We're working with our family because we have the same passion at cooking since our grandmother.<br/>
-                                    For us the most importang things is a taste of the dish itself.
+                                    L'ambiance y est familiale et l'équipe est réellement soudés afin de faire face à toutes vos demandes.
                                 </p>
                             </div>
+                        </div>
+                        <div className="col-lg-6 center-sm left" data-aos="fade-left">
+                            <img className="img-subhero" src="https://foodscene.deliveroo.be/assets/images/blogs/foodscene.deliveroo.be/fr/restaurants/1IUMIBtoh0CGUeWM6oul2ofVLlAw8M0x_o-ou1PgFSp4/2_lapomme.jpg?v=1.01" />
                         </div>
                     </div>
                 </div>
