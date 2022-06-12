@@ -3,6 +3,10 @@ import {Link,Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import {login} from '../../actions/auth';
+import livraison from './livraison.png'
+import gagner from './gagner.png'
+import acheter from './acheter.png'
+import recomp from './recomp.png'
 
 const Landing=({login,isAuthenticated})=>{
 
@@ -51,6 +55,7 @@ const Landing=({login,isAuthenticated})=>{
                                 Le principal ingrédient pour toute une bonne cuisine familiale est <strong>l’Amour</strong>,
                                 l’amour envers ceux pour qui vous cuisiner. <br/><br/><br/>
                                 <h6><strong>Notre adresse est : Chaussée de Tubize 210, 1440 Braine-le-Château</strong></h6>
+                                <h6><strong>Notre numéro est : 02 354 43 04</strong></h6>
                                 </p>
                             </div>
                         </div>
@@ -117,63 +122,59 @@ const Landing=({login,isAuthenticated})=>{
                         <div className="col-lg-12 text-center">
                             <h3>Menu du restaurant</h3>
                             <p>Vous pouvez télécharger notre menu ici.</p>
-                            <a target="_blank" href="https://drive.google.com/file/d/1CubI1InvEgqdyi32FW49nYoh6aRwrwcq/view?usp=sharing" className="btn-get-started scrollto">Menu</a>
+                            <a target="_blank" href="https://qrco.de/bbcv5J" className="btn-get-started scrollto">Menu</a>
                         </div>
                     </div>
 
                 </div>
             </section>
 
-            <section id="team" className="team section-bg">
+            <section id="fidelite" className="team section-bg">
                 <div className="container">
 
                     <div className="section-title">
-                        <h2>TEAM</h2>
-                        <p>Our team consists of best people on their skills.</p>
+                        <h2>Fidélité</h2>
+                        <p>Gagnez des points de fidélité en commandant ici.</p>
                     </div>
 
                     <div className="row">
 
                         <div className="col-lg-6">
                             <div className="member d-flex align-items-start" data-aos="fade-up">
-                                <div className="pic"><img src="https://mighty-reef-58921.herokuapp.com/img/chef-1.jpg" className="img-fluid" alt="" /></div>
+                                <div className="pic"><img src={livraison} className="img-fluid" alt="" /></div>
                                 <div className="member-info">
-                                    <h4>Sergio Verdial</h4>
-                                    <span>Service</span>
-                                    <p>18 years old amateur homecook from Malang, East java, Indonesia.</p>
+                                    <h4><strong>1.</strong> Faites votre commande sur ce site.</h4>
+                                    <p>Composez votre commande via la page dédiée à celle-ci en cliquant sur le bouton commander en haut de la page.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="col-lg-6 mt-4 mt-lg-0">
                             <div className="member d-flex align-items-start" data-aos="fade-up">
-                                <div className="pic"><img src="https://mighty-reef-58921.herokuapp.com/img/chef-2.jpg" className="img-fluid" alt="" /></div>
+                                <div className="pic"><img src={gagner} className="img-fluid" alt="" /></div>
                                 <div className="member-info">
-                                    <h4>Andre Verdial</h4>
-                                    <span>Homecook</span>
-                                    <p>18 years old amateur homecook from Malang, East java, Indonesia.</p>
+                                    <h4><strong>2.</strong> Gagnez des points.</h4>
+                                    <p>Chaque euro dépensé lors de votre commande augmente de 1 votre montant de points de fidélité.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="col-lg-6 mt-4">
                             <div className="member d-flex align-items-start" data-aos="fade-up">
-                                <div className="pic"><img src="https://mighty-reef-58921.herokuapp.com/img/chef-3.jpg" className="img-fluid" alt="" /></div>
+                                <div className="pic"><img src={acheter} className="img-fluid" alt="" /></div>
                                 <div className="member-info">
-                                    <h4>Rochdi</h4>
-                                    <span>Sous Chef</span>
-                                    <p>29 years old sous chef from Malang, East java, Indonesia.</p>
+                                    <h4><strong>3.</strong> Où depenser ses points?</h4>
+                                    <p>Vos points ne sont dépensable qu'au restaurant. Lors de votre visite sur place, vous pourrez utiliser votre montant de points afin d'obtenir des récompenses.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="col-lg-6 mt-4">
                             <div className="member d-flex align-items-start" data-aos="fade-up">
-                                <div className="pic"><img src="https://mighty-reef-58921.herokuapp.com/img/chef-4.jpg" className="img-fluid" alt="" /></div>
+                                <div className="pic"><img src={recomp} className="img-fluid" alt="" /></div>
                                 <div className="member-info">
-                                    <h4>Laurent Fuentes</h4>
-                                    <span>Executive Chef</span>
-                                    <p>25 years old executive chef from Malang, East java, Indonesia.</p>
+                                    <h4><strong>4.</strong> Que peut-on obtenir?</h4>
+                                    <p>Les récompensenses sont des desserts, des bons de réductions ou encore une bouteille de vin. Plus d'informations sur le ticket de caisse de votre commande.</p>
                                 </div>
                             </div>
                         </div>

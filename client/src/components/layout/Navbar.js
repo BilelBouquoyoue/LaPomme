@@ -49,9 +49,9 @@ const Navbar=({ auth: { isAuthenticated, loading }, logout })=>{
 
   let teamLinks=(
     <li className="nav-item mr-3">
-      <a className="nav-link js-scroll-trigger" href="#team">
-        <i className="white fas fa-people-arrows"></i>{''}
-        <span className="white hide-sm">&nbsp;&nbsp;L'équipe</span>
+      <a className="nav-link js-scroll-trigger" href="#fidelite">
+        <i className="white fas fa-money-check"></i>{''}
+        <span className="white hide-sm">&nbsp;&nbsp;Fidélité</span>
       </a>
     </li>
   );

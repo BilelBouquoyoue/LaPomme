@@ -62,6 +62,7 @@ app.use('/api/transaction', require('./routes/api/transaction'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/clients', require('./routes/api/client'));
 app.use('/api/score', require('./routes/api/score'));
+app.use('/api/recompense', require('./routes/api/recompense'));
 
 
 

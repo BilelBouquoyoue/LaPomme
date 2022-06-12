@@ -39,6 +39,9 @@ const TransactionSchema = new mongoose.Schema({
     },
     nomClient: {
         type: String,
+    },
+    remarque: {
+        type: String,
     }
 });
 

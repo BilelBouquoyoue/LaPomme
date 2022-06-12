@@ -7,7 +7,7 @@ import {deleteMenu} from '../../actions/menu';
 
 const MenuItem = ({
   deleteMenu,
-  menu: { _id, name, price, type, pic }
+  menu: { _id, name, price, type, pic, description }
 }) => (
     <div class="post menu bg-white p-1 my-1">
       {/* <div>
@@ -17,6 +17,9 @@ const MenuItem = ({
         <h3 class="my-1">
           {name}
         </h3>
+        <h5 class="my-1">
+          {description}
+        </h5>
         <h3 class="my-1">
           {price}
         </h3>

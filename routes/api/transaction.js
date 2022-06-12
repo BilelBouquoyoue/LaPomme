@@ -43,6 +43,7 @@ router.post('/',
         var adresse = req.body.adresse;
         var telephone = req.body.telephone
         var nomClient = req.body.nomClient
+        var remarque = req.body.remarque
 
         if(total>0){
             transaction = new Transaction({
@@ -51,7 +52,8 @@ router.post('/',
                 total,
                 adresse,
                 telephone,
-                nomClient
+                nomClient,
+                remarque
             });
     
             await transaction.save();

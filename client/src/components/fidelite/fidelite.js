@@ -18,9 +18,30 @@ const Fidelites = () => {
         const tel = useParams();
 
 
-        function reductionScore(){
+
+
+
+        function envoiDb(indice){
+          try {
+              const formData = new FormData();
+              formData.append('telephone', tel.num)
+              formData.append('recompense', indice)
+              const res = axios.post('/api/recompense', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+              });
+  
+              const id = res.data;
+            } catch (err) {
+              console.log(err);
+            }     
+      }
+
+        function reductionScore(indice){
             try {
                 const res = axios.post(`/api/score/glace/${tel.num}`);
+                envoiDb(indice)
                 window.location = `/recompense/${tel.num}`
               } catch (err) {
                 console.log(err);
@@ -69,7 +90,7 @@ const Fidelites = () => {
                 <br></br>
                 <div className="d-flex justify-content-around">
                     <img src={vin} class="rounded float-left" width={'20%'} onClick= {() => reductionScore2()}></img>
-                    <img src={glace} class="rounded float-right" width={'20%'} onClick= {() => reductionScore()}></img>
+                    <img src={glace} class="rounded float-right" width={'20%'} onClick= {() => reductionScore("glace")}></img>
                     <img src={promo} class="rounded float-center" width={'20%'} onClick= {() => reductionScore3()}></img>
                 </div>
             </Fragment>

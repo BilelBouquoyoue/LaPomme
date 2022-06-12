@@ -7,7 +7,7 @@ import {deleteMaincourse} from '../../actions/menu';
 
 const Maincourse = ({
   deleteMaincourse,
-  maincourse: { _id, name, price, type, pic }
+  maincourse: { _id, name, price, type, pic, description }
 }) => (
   <div className="menu bg-white d-flex align-items-center">
       <div>
@@ -18,6 +18,9 @@ const Maincourse = ({
           <h3>
             {name}
           </h3>
+          <h6>
+            {description}
+          </h6>
           <h3>
             {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(price)}
           </h3>

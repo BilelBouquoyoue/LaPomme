@@ -27,7 +27,8 @@ router.post('/', (req, res) => {
     const newMenu = new Menu({
         name: req.body.name,
         price: req.body.price,
-        type: req.body.type
+        type: req.body.type,
+        description: req.body.description
         //pic: `${file.name}`
     });
     

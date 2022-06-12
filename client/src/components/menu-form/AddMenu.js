@@ -7,9 +7,10 @@ const AddMenu = () => {
   const [formData, setFormData] = useState({
       name: '',
       price: '',
-      type: ''
+      type: '',
+      description: ''
   });
-  const {name, price, type} = formData;
+  const {name, price, type, description} = formData;
 
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
@@ -30,6 +31,7 @@ const AddMenu = () => {
     formData.append('name', name);
     formData.append('price', price);
     formData.append('type', type);
+    formData.append('description', description);
     //formData.append('file', file);
 
     try {
@@ -73,21 +75,26 @@ const AddMenu = () => {
           <table className="mt-5" cellPadding="10">
             <tr>
               <td class="center" colSpan="3">
-                <h2>ADD MENU</h2>
+                <h2>AJOUTER MENU</h2>
               </td>
             </tr>
             <tr>
               <td class="center" colSpan="4"></td>
             </tr>
             <tr>
-              <td>Name</td>
+              <td>Nom</td>
               <td>:</td>
               <td><input required value={name} type="text" name="name" onChange={e => onTextChange(e)} /></td>
             </tr>
             <tr>
-              <td>Price</td>
+              <td>Prix</td>
               <td>:</td>
               <td><input required value={price} type="text" name="price" onChange={e => onTextChange(e)} /></td>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td>:</td>
+              <td><input required value={description} type="text" name="description" onChange={e => onTextChange(e)} /></td>
             </tr>
             <tr>
               <td>Type</td>

@@ -13,6 +13,9 @@ const MenuSchema = new Schema({
     },
     pic: {
         type: String
+    },
+    description: {
+        type: String
     }
 });
 

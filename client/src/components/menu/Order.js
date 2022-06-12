@@ -17,6 +17,7 @@ import axios from 'axios';
 let adresse = ''
 let nomClient = ''
 let telephone = ''
+let remarque = ''
 
 function handleChange(e) {
   adresse = e.target.value;
@@ -30,6 +31,11 @@ function handleChange2(e) {
 
 function handleChange3(e) {
   nomClient = e.target.value;
+  console.log(nomClient)
+}
+
+function handleChange4(e) {
+  remarque = e.target.value;
   console.log(nomClient)
 }
 
@@ -71,6 +77,7 @@ const Order = (
           }
           
           formData.append('total', totalPrice);
+          formData.append('remarque', remarque);
           formData3.append('total', totalPrice);
           formData.append('adresse', adresse)
           formData2.append('adresse', adresse)
@@ -287,6 +294,9 @@ const Order = (
                             <h3>
                               {appetizer.name}
                             </h3>
+                            <h6 class="my-1">
+                              {appetizer.description}
+                            </h6>
                             <h3>
                               {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(appetizer.price)}
                             </h3>
@@ -325,6 +335,9 @@ const Order = (
                             <h3>
                               {maincourse.name}
                             </h3>
+                            <h6 class="my-1">
+                              {maincourse.description}
+                            </h6>
                             <h3>
                               {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(maincourse.price)}
                             </h3>
@@ -363,6 +376,9 @@ const Order = (
                             <h3>
                               {dessert.name}
                             </h3>
+                            <h6 class="my-1">
+                              {dessert.description}
+                            </h6>
                             <h3>
                               {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(dessert.price)}
                             </h3>
@@ -437,10 +453,11 @@ const Order = (
 
                     <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                  <input type="text" class="form-control" placeholder="nom" aria-label="Nom" aria-describedby="basic-addon1" onChange={handleChange3} required />
-                  <input type="text" class="form-control" maxLength={11} minLength={8} placeholder="numero" aria-label="Numero" aria-describedby="basic-addon1" onChange={handleChange2} required/>
+                    <input type="text" class="form-control" placeholder="nom" aria-label="Nom" aria-describedby="basic-addon1" onChange={handleChange3} required />
+                    <input type="text" class="form-control" maxLength={11} minLength={8} placeholder="numero" aria-label="Numero" aria-describedby="basic-addon1" onChange={handleChange2} required/>
                   </div>
-                  <input type="text" class="form-control" placeholder="adresse" aria-label="Adresse" aria-describedby="basic-addon1" onChange={handleChange} required/>
+                    <input type="text" class="form-control" placeholder="adresse" aria-label="Adresse" aria-describedby="basic-addon1" onChange={handleChange} required/>
+                    <input type="text" class="form-control" placeholder="remarque" aria-label="Remarque" aria-describedby="basic-addon1" onChange={handleChange4} required/>
                   </div>
                     
                     <div className="col-lg-2"></div>

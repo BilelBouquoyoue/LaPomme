@@ -2,10 +2,11 @@ import React, {Fragment, useEffect, useState} from 'react';
 import propTypes from 'prop-types';
 import {Link, useParams} from 'react-router-dom';
 import Spinner from '../layout/Spinner';
-import Moment from 'react-moment';
+import fide from './fideliteprint.png';
 import {connect} from 'react-redux';
 import { getItems } from '../../actions/transactions';
 import axios from "axios";
+import logo from '../../img/logo.png'
 
 const Print = ({
   getItems, item:{items,loading},
@@ -47,22 +48,36 @@ const Print = ({
                 <h5 className><strong>Points de fidélité : </strong>{data.total}&nbsp;</h5>
             </div>
             <div className="col-lg-6 col-md-6 right">
-              <img src="https://mighty-reef-58921.herokuapp.com/img/logo.png" class="logo-print" alt=""></img>
+              <img src={logo} class="logo-print" alt=""></img>
             </div>
           </div>
         {items.menu.map((item,index) => (
             <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-5">
-                    <b>{item.name}</b>
+                    <b>{item.amount} x {item.name}</b>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-2 right">
-                    {item.amount}
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-5 right">
                     {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(item.price*item.amount)}
                 </div>
             </div>
           ))}
+          <div className="row">
+              <div className="col-lg-12">
+                <hr></hr>
+              </div>
+          </div>
+          <div className="row">
+              <div className="col-lg-4 col-md-4 col-sm-5">
+                  <b>Remarque : </b>
+              </div>
+              <div className="col-lg-4 col-md-4 col-sm-2 right">
+              </div>
+              <div className="col-lg-4 col-md-4 col-sm-2 right">
+                {items.remarque}
+              </div>
+            </div>
           <div className="row">
               <div className="col-lg-12">
                 <hr></hr>
@@ -79,6 +94,9 @@ const Print = ({
                   {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(items.total)}
               </div>
           </div>
+          <br></br>
+          <br></br>
+          <img src={fide} width='100%'></img>
           </div>
         </div>
 

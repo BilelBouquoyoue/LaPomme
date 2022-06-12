@@ -43,7 +43,8 @@ const Login=({login,isAuthenticated})=>{
                         required 
                         type="email" 
                         placeholder="Email Address" 
-                        name="email" />
+                        name="email" 
+                        data-testid="email"/>
                         </div>
                         <div className="form-group flex-login">
                         <i className="fas fa-lock icon-login"></i>&nbsp;&nbsp;&nbsp;
