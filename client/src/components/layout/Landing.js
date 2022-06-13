@@ -49,7 +49,7 @@ const Landing=({login,isAuthenticated})=>{
                                 <p>
                                     <strong>La Pomme</strong> fut fondée il y a 29 ans <br/>
                                     Tout a commencé à Waterloo, pour continuer sur Wauthier-Braine.  <br/>
-                                    Le restaurant s'est mis à livrer depuis la période tragique du corona<br/>
+                                    Le restaurant s'est mis à livrer depuis la période tragique du corona.<br/>
                                 </p>
                                 <p>
                                 Le principal ingrédient pour toute une bonne cuisine familiale est <strong>l’Amour</strong>,
@@ -163,7 +163,7 @@ const Landing=({login,isAuthenticated})=>{
                                 <div className="pic"><img src={acheter} className="img-fluid" alt="" /></div>
                                 <div className="member-info">
                                     <h4><strong>3.</strong> Où depenser ses points?</h4>
-                                    <p>Vos points ne sont dépensable qu'au restaurant. Lors de votre visite sur place, vous pourrez utiliser votre montant de points afin d'obtenir des récompenses.</p>
+                                    <p>Vos points ne sont dépensables qu'au restaurant. Lors de votre visite sur place, vous pourrez utiliser votre montant de points afin d'obtenir des récompenses.</p>
                                 </div>
                             </div>
                         </div>
