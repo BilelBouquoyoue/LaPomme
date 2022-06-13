@@ -78,7 +78,7 @@ const Landing=({login,isAuthenticated})=>{
                                     Nous mettons un point d'honneur à maintenir une hygiène irréprochable.
                                 </p>
                                 <p className="black">
-                                    L'ambiance y est familiale et l'équipe est réellement soudés afin de faire face à toutes vos demandes.
+                                    L'ambiance y est familiale et l'équipe est réellement soudée afin de faire face à toutes vos demandes.
                                 </p>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ const Landing=({login,isAuthenticated})=>{
                                     Nous mettons un point d'honneur à maintenir une hygiène irréprochable.
                                 </p>
                                 <p className="black">
-                                    L'ambiance y est familiale et l'équipe est réellement soudés afin de faire face à toutes vos demandes.
+                                    L'ambiance y est familiale et l'équipe est réellement soudée afin de faire face à toutes vos demandes.
                                 </p>
                             </div>
                         </div>
