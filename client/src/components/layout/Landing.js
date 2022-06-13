@@ -53,7 +53,7 @@ const Landing=({login,isAuthenticated})=>{
                                 </p>
                                 <p>
                                 Le principal ingrédient pour toute une bonne cuisine familiale est <strong>l’Amour</strong>,
-                                l’amour envers ceux pour qui vous cuisiner. <br/><br/><br/>
+                                l’amour envers ceux pour qui vous cuisinez. <br/><br/><br/>
                                 <h6><strong>Notre adresse est : Chaussée de Tubize 210, 1440 Braine-le-Château</strong></h6>
                                 <h6><strong>Notre numéro est : 02 354 43 04</strong></h6>
                                 </p>
