@@ -1,7 +1,7 @@
 {
-    "name": "resto",
+    "name": "restau",
     "version": "1.0.0",
-    "description": "Wisesa's Resto",
+    "description": "Restaurant La Pomme",
     "main": "server.js",
     "scripts": {
         "start": "node server",
