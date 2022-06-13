@@ -48,18 +48,20 @@ const Fidelites = () => {
               }     
         }
 
-        function reductionScore2(){
+        function reductionScore2(indice){
             try {
                 const res = axios.post(`/api/score/vin/${tel.num}`);
+                envoiDb(indice)
                 window.location = `/recompense/${tel.num}`
               } catch (err) {
                 console.log(err);
               }     
         }
 
-        function reductionScore3(){
+        function reductionScore3(indice){
             try {
                 const res = axios.post(`/api/score/promo/${tel.num}`);
+                envoiDb(indice)
                 window.location = `/recompense/${tel.num}`
               } catch (err) {
                 console.log(err);
@@ -89,9 +91,9 @@ const Fidelites = () => {
                 <br></br>
                 <br></br>
                 <div className="d-flex justify-content-around">
-                    <img src={vin} class="rounded float-left" width={'20%'} onClick= {() => reductionScore2()}></img>
+                    <img src={vin} class="rounded float-left" width={'20%'} onClick= {() => reductionScore2("vin")}></img>
                     <img src={glace} class="rounded float-right" width={'20%'} onClick= {() => reductionScore("glace")}></img>
-                    <img src={promo} class="rounded float-center" width={'20%'} onClick= {() => reductionScore3()}></img>
+                    <img src={promo} class="rounded float-center" width={'20%'} onClick= {() => reductionScore3("promo")}></img>
                 </div>
             </Fragment>
         );
