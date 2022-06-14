@@ -458,7 +458,7 @@ const Order = (
                   </div>
                   <div class="input-group-prepend">
                     <input type="text" class="form-control" placeholder="adresse" aria-label="Adresse" aria-describedby="basic-addon1" onChange={handleChange} required/>
-                    <input type="text" class="form-control" placeholder="remarque" aria-label="Remarque" aria-describedby="basic-addon1" onChange={handleChange4} required/>
+                    <input type="text" class="form-control" placeholder="remarque" aria-label="Remarque" aria-describedby="basic-addon1" onChange={handleChange4}/>
                   </div>
                   </div>
                     
