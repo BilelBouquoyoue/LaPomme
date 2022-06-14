@@ -6,6 +6,10 @@ const RecompenseSchema = new mongoose.Schema({
     },
     recompense: {
         type: String,
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 
