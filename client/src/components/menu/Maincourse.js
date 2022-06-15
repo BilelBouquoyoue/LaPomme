@@ -28,11 +28,6 @@ const Maincourse = ({
       </div>
       <div className="center">
         <h3 className="my-1">
-          <Link to={`/editmenu/${_id}`}>
-            <div className="btn btn-danger mr-2">
-                {<i className="fas fa-edit"></i>}
-            </div>
-          </Link>
           <button onClick={e => deleteMaincourse(_id)}
               type="button"
               className="btn btn-danger">

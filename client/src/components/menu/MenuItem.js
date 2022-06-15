@@ -25,11 +25,6 @@ const MenuItem = ({
         </h3>
       </div>
       <div>
-          <Link to={`/editmenu/${_id}`}>
-            <div class="btn btn-danger">
-                    {<i class="fas fa-edit"></i>}
-            </div>
-          </Link>
           <button onClick={e => deleteMenu(_id)}
               type="button"
               class="btn btn-danger">
