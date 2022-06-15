@@ -452,14 +452,11 @@ const Order = (
                     <div className="col-lg-4 col-md-4 col-sm-4 mt-3 right">{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(totalPrice)}</div>
 
                   <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <input type="text" class="form-control" placeholder="nom" aria-label="Nom" aria-describedby="basic-addon1" onChange={handleChange3} required />
-                    <input type="text" class="form-control" maxLength={11} minLength={8} placeholder="numero" aria-label="Numero" aria-describedby="basic-addon1" onChange={handleChange2} required/>
-                  </div>
-                  <div class="input-group-prepend">
-                    <input type="text" class="form-control" placeholder="adresse" aria-label="Adresse" aria-describedby="basic-addon1" onChange={handleChange} required/>
-                    <input type="text" class="form-control" placeholder="remarque" aria-label="Remarque" aria-describedby="basic-addon1" onChange={handleChange4}/>
-                  </div>
+                      <input type="text" class="form-control" placeholder="nom" aria-label="Nom" aria-describedby="basic-addon1" onChange={handleChange3} required />
+                      <input type="text" class="form-control" maxLength={11} minLength={8} placeholder="numero" aria-label="Numero" aria-describedby="basic-addon1" onChange={handleChange2} required/>
+
+                      <input width={"20%"}  type="text"  class="form-control" placeholder="adresse" aria-label="Adresse" aria-describedby="basic-addon1" onChange={handleChange} required/>
+                      <input type="text" class="form-control" placeholder="remarque" aria-label="Remarque" aria-describedby="basic-addon1" onChange={handleChange4}/>
                   </div>
                     
                     <div className="col-lg-2"></div>
