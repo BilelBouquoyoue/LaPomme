@@ -15,7 +15,8 @@ const TransactionItem = ({
 }) => { 
   console.log(menu)
   return(
-    <div className="sub-trans bg-white">
+    <div className="sub-trans bg-white border">
+
       <div className="center">
         {menu.map((men) => (
           <div>{men.amount} {men.name}</div>
