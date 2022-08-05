@@ -12,7 +12,7 @@ import Swal from 'sweetalert2'
 
 
 
-const TransactionItem = ({
+const TransactionItem2 = ({
   transaction: { _id, user_id, total, menu, date, adresse, telephone, nomClient, remarque },
   //count: no
 }) => { 
@@ -29,30 +29,18 @@ const TransactionItem = ({
         {nomClient}
       </div>
       <div className="m-2 center">
+        {total+ '€'}
+      </div>
+      <div className="m-2 center">
           <Moment format='DD-MM-YYYY HH:mm:ss'>{date}</Moment>
       </div>
       <div className="m-1 center">
         {adresse}
       </div>
       <div className="m-2 center">
-        <button class="btn btn-success" onClick={() => {window.location = `/print2/${_id}`}}>Voir Commande</button>
+        <button class="btn btn-success" onClick={() => {window.location = `/print/${_id}`}}>Voir Commande</button>
       </div>
-      <div className="m-2 center">
-        <button class="btn btn-warning" onClick={() => { Swal.fire({
-            title: 'Voulez-vous archiver cette commande?',
-            showDenyButton: true,
-            confirmButtonText: 'Oui',
-            denyButtonText: `Non`,
-          }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-              axios.delete(`/api/transactionEnCours/${_id}`);
-              window.location.reload(false);
-            } else if (result.isDenied) {
-              Swal.fire('Commande non archivée', '', 'info')
-            }
-})}}>Archiver</button>
-      </div>
+      
     </div>
     )};
 
@@ -65,4 +53,4 @@ const mapStateToProps= state => ({
 export default connect(
   mapStateToProps, 
   null
-)(TransactionItem);
+)(TransactionItem2);

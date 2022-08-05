@@ -5,6 +5,8 @@ import Moment from 'react-moment';
 import {connect} from 'react-redux';
 import {deleteMenu} from '../../actions/menu';
 
+
+
 const MenuItem = ({
   deleteMenu,
   menu: { _id, name, price, type, pic, description }

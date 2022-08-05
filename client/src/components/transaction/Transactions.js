@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import propTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
-import Transaction from './TransactionItem';
+import Transaction from './TransactionItem2';
 import {connect} from 'react-redux';
 import { getTransactions } from '../../actions/transactions';
 import Pagination from "react-js-pagination";
@@ -55,6 +55,7 @@ const Transactions = (
 
         useEffect(()=>{
             getCurrentAll();
+            
         }, [all]);
 
         useEffect(()=>{

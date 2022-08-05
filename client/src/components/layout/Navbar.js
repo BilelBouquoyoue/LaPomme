@@ -17,6 +17,12 @@ const Navbar=({ auth: { isAuthenticated, loading }, logout })=>{
       <li className="nav-item mr-5">
         <Link to='/transactionsEnCours'>
           <i className="white fas fa-list"></i>{''}
+          <span className="white hide-sm">&nbsp;&nbsp;Commandes</span>
+        </Link>
+      </li>
+      <li className="nav-item mr-5">
+        <Link to='/transactions'>
+          <i className="white fas fa-calculator "></i>{''}
           <span className="white hide-sm">&nbsp;&nbsp;Transactions</span>
         </Link>
       </li>

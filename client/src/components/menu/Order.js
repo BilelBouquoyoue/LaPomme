@@ -7,9 +7,9 @@ import Maincourse from './Maincourse';
 import MenuItem from './MenuItem';
 import Dessert from './Dessert';
 import {connect} from 'react-redux';
-import {getAppetizers} from '../../actions/menu';
-import {getMaincourses} from '../../actions/menu';
-import {getDesserts} from '../../actions/menu';
+import {getAppetizers2} from '../../actions/menu';
+import {getMaincourses2} from '../../actions/menu';
+import {getDesserts2} from '../../actions/menu';
 import { getMenu } from '../../actions/menu';
 import dessert from '../../reducers/dessert';
 import axios from 'axios';
@@ -44,9 +44,9 @@ function handleChange4(e) {
 const Order = (
 
     {
-        getAppetizers, appetizer: {appetizers, loadingAppetizer},
-        getMaincourses, maincourse: {maincourses, loadingMaincourse},
-        getDesserts, dessert: {desserts, loadingDessert},
+        getAppetizers2, appetizer: {appetizers, loadingAppetizer},
+        getMaincourses2, maincourse: {maincourses, loadingMaincourse},
+        getDesserts2, dessert: {desserts, loadingDessert},
         getMenu, menu:{menus, loadingMenu}
     }
     ) => {
@@ -249,7 +249,7 @@ const Order = (
         };
 
     useEffect(()=>{
-        getAppetizers();
+        getAppetizers2();
 
         if(!loadingAppetizer){
           for(let i=0;i<appetizers.length;i++){
@@ -262,10 +262,10 @@ const Order = (
         }
         //console.log(appetizers.length);
 
-    }, [loadingAppetizer, getAppetizers]);
+    }, [loadingAppetizer, getAppetizers2]);
 
     useEffect(()=>{
-        getMaincourses();
+        getMaincourses2();
 
         if(!loadingMaincourse){
           for(let i=0;i<maincourses.length;i++){
@@ -278,10 +278,10 @@ const Order = (
         }
 
         //console.log(maincourses.length);
-    }, [loadingMaincourse, getMaincourses]);
+    }, [loadingMaincourse, getMaincourses2]);
 
     useEffect(()=>{
-      getDesserts();
+      getDesserts2();
 
       if(!loadingDessert){
         for(let i=0;i<desserts.length;i++){
@@ -293,7 +293,7 @@ const Order = (
         }
       }
       //console.log(desserts.length);
-    }, [loadingDessert, getDesserts]);
+    }, [loadingDessert, getDesserts2]);
     
 
     useEffect(() => {
@@ -506,9 +506,9 @@ const Order = (
 };
 
 Order.propTypes = {
-    getAppetizers: propTypes.func.isRequired,
-    getMaincourses: propTypes.func.isRequired,
-    getDesserts: propTypes.func.isRequired,
+    getAppetizers2: propTypes.func.isRequired,
+    getMaincourses2: propTypes.func.isRequired,
+    getDesserts2: propTypes.func.isRequired,
     getMenu: propTypes.func.isRequired,
     menu: propTypes.object.isRequired,
     appetizer: propTypes.object.isRequired,
@@ -523,4 +523,4 @@ const mapStateToProps= state => ({
     menu:state.menu
 });
 
-export default connect(mapStateToProps, {getAppetizers,getMaincourses,getDesserts,getMenu})(Order);
+export default connect(mapStateToProps, {getAppetizers2,getMaincourses2,getDesserts2,getMenu})(Order);

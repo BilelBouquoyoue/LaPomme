@@ -32,6 +32,7 @@ const AddMenu = () => {
     formData.append('price', price);
     formData.append('type', type);
     formData.append('description', description);
+    formData.append('hide', 1);
     //formData.append('file', file);
 
     try {

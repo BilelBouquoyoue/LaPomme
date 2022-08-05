@@ -28,7 +28,8 @@ router.post('/', (req, res) => {
         name: req.body.name,
         price: req.body.price,
         type: req.body.type,
-        description: req.body.description
+        description: req.body.description,
+        hide: req.body.hide
         //pic: `${file.name}`
     });
     
@@ -38,6 +39,31 @@ router.post('/', (req, res) => {
   //});
 
 });
+
+
+
+
+
+
+
+router.post('/hide/:id', 
+    async(req, res) => {
+        let etat2 = await Menu.findOne({ _id:req.params.id });
+    try {
+        //See if client exists
+        let etat = await Menu.findOneAndUpdate({_id: req.params.id}, {hide: etat2.hide*-1}, { new: true });   
+        return res.json(etat);
+        await etat.save();
+
+    } 
+    catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+    return res.json(Menu);
+    }
+);
+
 
 // @route    UPDATE api/menu
 // @desc     Update menu
@@ -111,6 +137,18 @@ router.get('/list', async(req, res) => {
 // @route    GET api/menu/list/type
 // @desc     Load menus that has certain types (1 is appetizer, 2 is main course, 3 is dessert)
 // @access   Private
+router.get('/liste/:type', async(req, res) => {
+    try {
+        const menu = await Menu.find({type:req.params.type, hide: 1}).sort({ type: 1, name: 1 });
+        //console.log(menu);
+
+        res.json(menu);
+    } catch (err) {
+        console.error(err)
+            //res.render('error/500')
+    }
+})
+
 router.get('/list/:type', async(req, res) => {
     try {
         const menu = await Menu.find({type:req.params.type}).sort({ type: 1, name: 1 });

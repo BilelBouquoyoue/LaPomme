@@ -59,6 +59,22 @@ export const deleteMenu = id => async dispatch => {
 }
 
 // Get Appetizers
+export const getAppetizers2 = () => async dispatch => {
+    try {
+        const res=await axios.get('/api/menu/liste/1');
+
+        dispatch({
+            type:GET_APPETIZERS,
+            payload:res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: MENU_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}
+
 export const getAppetizers = () => async dispatch => {
     try {
         const res=await axios.get('/api/menu/list/1');
@@ -74,6 +90,7 @@ export const getAppetizers = () => async dispatch => {
         });
     }
 }
+
 
 // Get post
 export const getAppetizer = id => async dispatch => {
@@ -116,7 +133,23 @@ export const deleteAppetizer = id => async dispatch => {
 // Get Maincourses
 export const getMaincourses = () => async dispatch => {
     try {
-        const res=await axios.get('/api/menu/list/2');
+        const res=await axios.get('/api/menu/list/2', {params: {hide: 1}});
+
+        dispatch({
+            type:GET_MAINCOURSES,
+            payload:res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: MENU_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}
+
+export const getMaincourses2 = () => async dispatch => {
+    try {
+        const res=await axios.get('/api/menu/liste/2', {params: {hide: 1}});
 
         dispatch({
             type:GET_MAINCOURSES,
@@ -149,10 +182,36 @@ export const deleteMaincourse = id => async dispatch => {
     }
 }
 
+export const hideMenu = id => async dispatch => {
+    try {
+        const res=await axios.post(`/api/menu/hide/${id}`);
+        
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 // Get Desserts
 export const getDesserts = () => async dispatch => {
     try {
         const res=await axios.get('/api/menu/list/3');
+
+        dispatch({
+            type:GET_DESSERTS,
+            payload:res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: MENU_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}
+
+export const getDesserts2 = () => async dispatch => {
+    try {
+        const res=await axios.get('/api/menu/liste/3');
 
         dispatch({
             type:GET_DESSERTS,

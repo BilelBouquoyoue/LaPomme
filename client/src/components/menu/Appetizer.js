@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import Moment from 'react-moment';
 import {connect} from 'react-redux';
 import {deleteAppetizer} from '../../actions/menu';
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
 const Appetizer = ({
   deleteAppetizer,
@@ -32,6 +34,27 @@ const Appetizer = ({
               type="button"
               className="btn btn-danger">
                   {<i className="fas fa-times"></i>}
+          </button>
+        </h3>
+      </div>
+      <div className="center">
+        <h3 className="my-1">
+        <button onClick={() => { Swal.fire({
+            title: "Voulez-vous changer l'état cette commande?",
+            showDenyButton: true,
+            confirmButtonText: 'Oui',
+            denyButtonText: `Non`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              axios.post(`/api/menu/hide/${_id}`);
+              Swal.fire('Etat changé', '', 'success')
+            } else if (result.isDenied) {
+              Swal.fire('Etat non changé', '', 'info')
+            }
+            })}}type="button"
+            className="btn btn-warning">
+            {<i className="fas fa-eye"></i>}
           </button>
         </h3>
       </div>
