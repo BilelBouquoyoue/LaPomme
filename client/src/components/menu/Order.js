@@ -13,6 +13,7 @@ import {getDesserts} from '../../actions/menu';
 import { getMenu } from '../../actions/menu';
 import dessert from '../../reducers/dessert';
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 let adresse = ''
 let nomClient = ''
@@ -39,6 +40,7 @@ function handleChange4(e) {
   console.log(nomClient)
 }
 
+
 const Order = (
 
     {
@@ -49,7 +51,7 @@ const Order = (
     }
     ) => {
 
-        const onSubmit = async e => {
+        const onSubmit = async (e, result) => {
           e.preventDefault();  
           const formData = new FormData();
           const formData2 = new FormData();
@@ -87,43 +89,70 @@ const Order = (
           formData.append('nomClient', nomClient)
           formData2.append('nomClient', nomClient)
 
-          try {
-            const res = await axios.post('/api/clients', formData2, {
-              headers: {
-                'Content-Type': 'multipart/form-data'
+          Swal.fire({
+            title: "Êtes-vous sûr d'avoir terminé votre commande?",
+            showDenyButton: true,
+            confirmButtonText: 'Oui',
+            denyButtonText: `Non`,
+          }).then((result) = async result => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              try {
+                const res = await axios.post('/api/clients', formData2, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                });
+    
+                const id = res.data;
+              } catch (err) {
+                console.log(err);
+              }     
+              
+              try {
+                const res = await axios.post('/api/score', formData3, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                });
+    
+                const id = res.data;
+              } catch (err) {
+                console.log(err);
+              }  
+    
+              try {
+                const res = await axios.post('/api/transaction', formData, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                });
+    
+                const id = res.data;
+    
+              } catch (err) {
+                console.log(err);
               }
-            });
+    
+              try {
+                const res = await axios.post('/api/transactionEnCours', formData, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                });
+    
+                const id = res.data;
+    
+                window.location = `/print2/${res.data}`;
+              } catch (err) {
+                console.log(err);
+              }
+            } else if (result.isDenied) {
+    
+            }
+          })
 
-            const id = res.data;
-          } catch (err) {
-            console.log(err);
-          }     
           
-          try {
-            const res = await axios.post('/api/score', formData3, {
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            });
-
-            const id = res.data;
-          } catch (err) {
-            console.log(err);
-          }  
-
-          try {
-            const res = await axios.post('/api/transaction', formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            });
-
-            const id = res.data;
-
-            window.location = `/print/${res.data}`;
-          } catch (err) {
-            console.log(err);
-          }
         };
       
         const [minimizeChart, setMinimizeChart] = useState([]);

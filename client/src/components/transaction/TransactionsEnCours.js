@@ -4,14 +4,14 @@ import propTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import Transaction from './TransactionItem';
 import {connect} from 'react-redux';
-import { getTransactions } from '../../actions/transactions';
+import { getTransactionsEnCours } from '../../actions/transactions';
 import Pagination from "react-js-pagination";
 
 
 
 const Transactions = (
     {
-        getTransactions, transaction: {transactions, loading}
+        getTransactionsEnCours, transaction: {transactions, loading}
     }
     ) => {
         const [all, setAll] = useState(transactions);
@@ -47,11 +47,11 @@ const Transactions = (
 
         //console.log(all)
         useEffect(()=>{
-            getTransactions();
+            getTransactionsEnCours();
             setCurrentPage(1);
             setAllPerPage(10);
             setAll(transactions);
-        }, [loading, getTransactions]);
+        }, [loading, getTransactionsEnCours]);
 
         useEffect(()=>{
             getCurrentAll();
@@ -75,9 +75,6 @@ const Transactions = (
                                 <h4 className="white">Nom client</h4>
                             </div>
                             <div>
-                                <h4 className="white">Prix total</h4>
-                            </div>
-                            <div>
                                 <h4 className="white">Date Transaction</h4>
                             </div>
                             <div>
@@ -85,6 +82,9 @@ const Transactions = (
                             </div>
                             <div>
                                 <h4 className='white'>Commande</h4>
+                            </div>
+                            <div>
+                                <h4 className='white'>Archivage</h4>
                             </div>
                         </div>
                         {renderAll}
@@ -104,7 +104,7 @@ const Transactions = (
 };
 
 Transactions.propTypes = {
-    getTransactions: propTypes.func.isRequired,
+    getTransactionsEnCours: propTypes.func.isRequired,
     transaction: propTypes.object.isRequired
 }
 
@@ -112,4 +112,4 @@ const mapStateToProps= state => ({
     transaction: state.transaction
 });
 
-export default connect(mapStateToProps, {getTransactions})(Transactions);
+export default connect(mapStateToProps, {getTransactionsEnCours})(Transactions);

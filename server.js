@@ -59,6 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/menu', require('./routes/api/menu'));
 app.use('/api/transaction', require('./routes/api/transaction'));
+app.use('/api/transactionEnCours', require('./routes/api/transactionsEnCours'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/clients', require('./routes/api/client'));
 app.use('/api/score', require('./routes/api/score'));
