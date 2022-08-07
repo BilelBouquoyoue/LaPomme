@@ -10,10 +10,10 @@ import Swal from 'sweetalert2'
 
 function verifyState(a){
   if(a == '-1'){
-    return 'non affiché'
+    return <span class="badge badge-danger">Non affiché</span>
   }
   else{
-    return 'affiché'
+    return <span class="badge badge-success">Affiché</span>
   }
 }
 
@@ -36,7 +36,7 @@ const Appetizer = ({
           <h3>
             {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(price)}
           </h3>
-          <h6>{verifyState(hide)}</h6>
+          {verifyState(hide)}
         </div>
       </div>
       <div className="center">
