@@ -45,9 +45,20 @@ const TransactionItem = ({
             denyButtonText: `Non`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-              axios.delete(`/api/transactionEnCours/${_id}`);
-              window.location.reload(false);
+            if (result.isConfirmed) { 
+              Swal.fire({
+                title: 'Transaction archivée!',
+                confirmButtonText: 'OK',
+              }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  axios.delete(`/api/transactionEnCours/${_id}`);
+                  window.location.reload(false);
+                } else{
+                  axios.delete(`/api/transactionEnCours/${_id}`);
+                  window.location.reload(false);
+                }
+              })
             } else if (result.isDenied) {
               Swal.fire('Commande non archivée', '', 'info')
             }
