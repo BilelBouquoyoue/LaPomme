@@ -24,7 +24,7 @@ const TransactionItem = ({
           <div>{men.amount} {men.name}</div>
         )
         )}
-      </div>
+      </div> 
       <div className="m-1 center">
         {nomClient}
       </div>

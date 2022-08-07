@@ -7,9 +7,19 @@ import {deleteDessert} from '../../actions/menu';
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
+
+function verifyState(a){
+  if(a == '-1'){
+    return 'non affiché'
+  }
+  else{
+    return 'affiché'
+  }
+}
+
 const Dessert = ({
   deleteDessert,
-  dessert: { _id, name, price, type, pic, description }
+  dessert: { _id, name, price, type, pic, description, hide }
 }) => (
   <div className="menu bg-white d-flex align-items-center">
       <div>
@@ -26,6 +36,7 @@ const Dessert = ({
           <h3>
             {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(price)}
           </h3>
+          <h6>{verifyState(hide)}</h6>
         </div>
     </div>
     <div className="center">
@@ -49,6 +60,9 @@ const Dessert = ({
             if (result.isConfirmed) {
               axios.post(`/api/menu/hide/${_id}`);
               Swal.fire('Etat changé', '', 'success')
+              setTimeout(() => {
+                window.location.reload();
+              }, 2000);
             } else if (result.isDenied) {
               Swal.fire('Etat non changé', '', 'info')
             }
@@ -58,6 +72,13 @@ const Dessert = ({
           </button>
       </h3>
     </div>
+    <div className="center">
+        <Link to={`/editmenu/${_id}`}>
+          <div className="btn btn-danger mr-2">
+            {<i className="fas fa-edit"></i>}
+          </div>
+        </Link>
+      </div>
   </div>
     );
 

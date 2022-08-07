@@ -55,14 +55,13 @@ const Transactions = (
 
         useEffect(()=>{
             getCurrentAll();
-            
         }, [all]);
 
         useEffect(()=>{
             getCurrentAll();
         }, [currentPage]);
 
-        return loading ? (
+        return loading ? ( 
             <Spinner />
         ) : (
             <Fragment>

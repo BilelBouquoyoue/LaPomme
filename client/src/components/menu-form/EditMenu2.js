@@ -6,7 +6,7 @@ import { getMenu } from '../../actions/menu';
 import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2'
 
-const EditMenu = () => {
+const EditMenu2 = () => {
   const [formData, setFormData] = useState({
       price: '',
       description: ''
@@ -156,4 +156,4 @@ const EditMenu = () => {
   );
 };
 
-export default EditMenu;
+export default EditMenu2;

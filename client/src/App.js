@@ -9,6 +9,7 @@ import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import AddMenu from './components/menu-form/AddMenu';
 import EditMenu from './components/menu-form/EditMenu';
+import EditMenu2 from './components/menu-form/EditMenu2';
 import Temp from './components/menu-form/Temp';
 import Menus from './components/menu/Menus';
 import Order from './components/menu/Order';
@@ -64,6 +65,7 @@ const App = () => {
                                 <PrivateRoute exact path="/recompense/:num" component={Recompense} />
                                 <PrivateRoute exact path="/addmenu" component={AddMenu} />
                                 <PrivateRoute exact path="/editmenu/:id" component={EditMenu} />
+                                <PrivateRoute exact path="/editmenu2/:id" component={EditMenu2} />
                                 <PrivateRoute exact path="/score/:num" component={Fidelite} />
                                 <PrivateRoute exact path="/menus" component={Menus} />
                                 <PrivateRoute exact path="/transactions" component={Transactions} />

@@ -78,7 +78,8 @@ router.put('/:id',
         const {
             name,
             price,
-            type
+            type,
+            description
         } = req.body;
 
         // const file = req.files.file;
@@ -97,6 +98,7 @@ router.put('/:id',
         if (name) menuFields.name = name;
         if (price) menuFields.price = price;
         if (type) menuFields.type = type;
+        if (description) menuFields.description = description;
         //if (file) menuFields.pic = `${file.name}`;
         console.log(menuFields);
             
