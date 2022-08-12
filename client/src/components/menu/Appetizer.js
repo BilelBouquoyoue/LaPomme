@@ -23,7 +23,7 @@ const Appetizer = ({
 }) => (
     <div className="menu bg-white d-flex align-items-center">
       <div>
-        <img className="img-menu" src={`https://mighty-reef-58921.herokuapp.com/menu/appetizer.png`} />
+        <img width={'70%'} className="img-menu" src={`https://mighty-reef-58921.herokuapp.com/menu/appetizer.png`} />
       </div>
       <div className="price">
         <div>

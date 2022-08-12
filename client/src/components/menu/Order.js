@@ -308,7 +308,7 @@ const Order = (
     ) : (
         <Fragment>
           <form onSubmit={onSubmit}>
-            <div className="row d-flex flex-column-xl justify-content-center mt-5">
+            <div className="row d-flex flex-column-x1 justify-content-center mt-5">
                 <div className="appetizers d-flex flex-column align-items-center center m-2">
                     <div className="d-flex justify-content-between mt-5">
                         <h2 className="dish-type mr-3">Entrées</h2>
@@ -316,7 +316,7 @@ const Order = (
                     {appetizers.map((appetizer,index) => (
                       <div className="menu bg-white d-flex align-items-center">
                         <div>
-                          <img className="img-menu" src={`https://mighty-reef-58921.herokuapp.com/menu/appetizer.png`} />
+                          <img width={'70%'} className="img-menu" src={`https://mighty-reef-58921.herokuapp.com/menu/appetizer.png`} />
                         </div>
                         <div className="price">
                           <div>
@@ -357,7 +357,7 @@ const Order = (
                     {maincourses.map((maincourse,index) => (
                       <div className="menu bg-white d-flex align-items-center">
                         <div>
-                          <img className="img-menu" src={`https://mighty-reef-58921.herokuapp.com/menu/main-course.png`} />
+                          <img width={'70%'} className="img-menu" src={`https://mighty-reef-58921.herokuapp.com/menu/main-course.png`} />
                         </div>
                         <div className="price">
                           <div>
@@ -398,7 +398,7 @@ const Order = (
                     {desserts.map((dessert,index) => (
                       <div className="menu bg-white d-flex align-items-center">
                         <div>
-                          <img className="img-menu" src={`https://mighty-reef-58921.herokuapp.com/menu/dessert.png`} />
+                          <img width={'70%'} className="img-menu" src={`https://mighty-reef-58921.herokuapp.com/menu/dessert.png`} />
                         </div>
                         <div className="price">
                           <div>

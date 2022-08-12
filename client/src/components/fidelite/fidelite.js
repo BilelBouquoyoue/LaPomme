@@ -121,7 +121,7 @@ const Fidelites = () => {
                     <img src={promo} class="rounded float-center" width={'20%'} onClick= {() => reductionScore3("promo")}></img>
                 </div>
                 <div className="d-flex justify-content-center mt-1">
-                  <form onSubmit={console.log('hello')}>
+                  <form onSubmit={console.log()}>
                     <table className="mt-5" cellPadding="10">
                       <tr>
                         <td class="center" colSpan="3">
