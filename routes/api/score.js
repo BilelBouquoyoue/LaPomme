@@ -45,6 +45,23 @@ router.post('/',
 );
 
 
+router.post('/change/:tel', 
+    async(req, res) => {
+
+        try {
+            let score = await Score.findOneAndUpdate({telephone: req.params.tel}, { telephone: req.body.tel}, { new: true });   
+            return res.json(score);        
+        }
+        catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server error');
+        }
+        return res.json(Score);
+        }
+
+);
+
+
 router.post('/glace/:tel', 
     async(req, res) => {
         let score2 = await Score.findOne({ telephone:req.params.tel });

@@ -26,7 +26,7 @@ const Landing=({login,isAuthenticated})=>{
                         <div className="col-lg-12 mt-3 d-flex center flex-column justify-content-center" data-aos="fade-up">
                             <h1>La Pomme</h1>
                             <h2>Nous tenons à vous proposer le meilleur!</h2>
-                            <div className="d-lg-flex justify-content-center">
+                            <div className="justify-content-center">
                                 <a href="/order" className="btn-get-started scrollto">Commander</a>
                             </div>
                         </div>

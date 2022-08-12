@@ -61,6 +61,15 @@ const Navbar=({ auth: { isAuthenticated, loading }, logout })=>{
       </a>
     </li>
   );
+
+  let orderLinks=(
+    <li className="nav-item mr-3">
+      <a className="nav-link js-scroll-trigger" href="order">
+        <i className="white fas fa-cart-plus"></i>{''}
+        <span className="white hide-sm">&nbsp;&nbsp;Commander</span>
+      </a>
+    </li>
+  );
   
   let loginLinks=(
     <li className="nav-item mr-3">
@@ -83,6 +92,7 @@ const Navbar=({ auth: { isAuthenticated, loading }, logout })=>{
         </li>
         {pathname=='/' ? aboutLinks : null}
         {pathname=='/' ? teamLinks : null}
+        {pathname=='/' ? orderLinks : null}
         {pathname=='/' || pathname=='/login' || pathname=='/print'}
         {pathname=='/' || pathname=='/login' || pathname=='/print' ? loginLinks : null}
       </ul>

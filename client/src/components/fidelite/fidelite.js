@@ -15,16 +15,41 @@ import promo from './promo.png'
 const Fidelites = () => {
 
         const [data, setData] = useState([]);
-        const tel = useParams();
+        const tel2 = useParams();
 
 
+        const [formData2, setFormData] = useState({
+          tel: '',
+      });
+      const {tel} = formData2;
 
+        const onTextChange = e => {
+          setFormData({...formData2,[e.target.name]:e.target.value.toString()});
+          console.log(formData2.tel.toString())
+      };
+
+
+      const onSubmit = async e => {
+        e.preventDefault();
+        try {
+          const res = await axios.post(`/api/score/change/${tel2.num}`, formData2, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          });
+
+          const tel = res.data;
+    
+        } catch (err) {
+          console.log("error")
+        }
+      };
 
 
         function envoiDb(indice){
           try {
               const formData = new FormData();
-              formData.append('telephone', tel.num)
+              formData.append('telephone', tel2.num)
               formData.append('recompense', indice)
               const res = axios.post('/api/recompense', formData, {
                 headers: {
@@ -40,9 +65,9 @@ const Fidelites = () => {
 
         function reductionScore(indice){
             try {
-                const res = axios.post(`/api/score/glace/${tel.num}`);
+                const res = axios.post(`/api/score/glace/${tel2.num}`);
                 envoiDb(indice)
-                window.location = `/recompense/${tel.num}`
+                window.location = `/recompense/${tel2.num}`
               } catch (err) {
                 console.log(err);
               }     
@@ -52,7 +77,7 @@ const Fidelites = () => {
             try {
                 const res = axios.post(`/api/score/vin/${tel.num}`);
                 envoiDb(indice)
-                window.location = `/recompense/${tel.num}`
+                window.location = `/recompense/${tel2.num}`
               } catch (err) {
                 console.log(err);
               }     
@@ -60,18 +85,18 @@ const Fidelites = () => {
 
         function reductionScore3(indice){
             try {
-                const res = axios.post(`/api/score/promo/${tel.num}`);
+                const res = axios.post(`/api/score/promo/${tel2.num}`);
                 envoiDb(indice)
-                window.location = `/recompense/${tel.num}`
+                window.location = `/recompense/${tel2.num}`
               } catch (err) {
                 console.log(err);
               }     
         }
 
         const getData = async () => {
-            const { data } = await axios.get(`/api/score/${tel.num}`);
+            const { data } = await axios.get(`/api/score/${tel2.num}`);
             setData(data);
-            console.log(tel)
+            console.log(tel2)
           };
 
           useEffect(() => {
@@ -95,6 +120,36 @@ const Fidelites = () => {
                     <img src={glace} class="rounded float-right" width={'20%'} onClick= {() => reductionScore("glace")}></img>
                     <img src={promo} class="rounded float-center" width={'20%'} onClick= {() => reductionScore3("promo")}></img>
                 </div>
+                <div className="d-flex justify-content-center mt-1">
+                  <form onSubmit={console.log('hello')}>
+                    <table className="mt-5" cellPadding="10">
+                      <tr>
+                        <td class="center" colSpan="3">
+                          <h2>Numéro actuel du client : <b>{data.telephone}</b></h2>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="center" colSpan="4"></td>
+                      </tr>
+                      <tr>
+                        <td>Changer de numéro de telephone :</td>
+                        <td>:</td>
+                        <td><input value={tel} required type="text" name="tel" onChange={e => onTextChange(e)}/></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <input
+                            type='submit'
+                            value='Rechercher'
+                            className='btn btn-primary btn-block mt-4'
+                          />
+                        </td>
+                      </tr>
+                      </table>
+                    </form>
+        </div>
             </Fragment>
         );
 };
