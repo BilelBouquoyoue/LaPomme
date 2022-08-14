@@ -186,6 +186,10 @@
     transition: opacity 0.2s ease-in;
     outline: none;
   }
+
+  .bepo{
+    width: 80%;
+  }
   
   .badge {
     font-size: 0.8rem;
@@ -736,7 +740,7 @@
 
   @media (max-width: 600px) {
     .price{
-      height: 20px;;
+      height:auto;
     }
 
     .landing-inner {
@@ -772,7 +776,7 @@
   /* Medium devices (landscape tablets, 768px and up) */
   @media only screen and (min-width: 768px) {
     .price{
-      height:20px;
+      height:auto;
     }
 
     .landing-inner {

@@ -21,7 +21,9 @@ const Landing=({login,isAuthenticated})=>{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12 d-flex justify-content-center" data-aos="fade-down">
-                            <img src="https://acegif.com/wp-content/gifs/apple-81.gif" className="img-hero img-fluid animated" alt="" />
+                            <div className="bepo">
+                                <img src="https://acegif.com/wp-content/gifs/apple-81.gif" className="img-hero img-fluid animated" alt="" />
+                            </div>
                         </div>
                         <div className="col-lg-12 mt-3 d-flex center flex-column justify-content-center" data-aos="fade-up">
                             <h1>La Pomme</h1>

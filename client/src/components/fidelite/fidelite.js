@@ -7,6 +7,7 @@ import axios from "axios";
 import vin from "./vin.png"
 import glace from './glace.png'
 import promo from './promo.png'
+import Swal from 'sweetalert2'
 
 
 
@@ -30,16 +31,22 @@ const Fidelites = () => {
 
 
       const onSubmit = async e => {
+        const formDataNew = new FormData();
+        formDataNew.append('tel', formData2.tel)
         e.preventDefault();
         try {
-          const res = await axios.post(`/api/score/change/${tel2.num}`, formData2, {
+          const res = await axios.post(`/api/score/change/${tel2.num}`, formDataNew, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           });
 
           const tel = res.data;
-    
+          Swal.fire('Numéro mis à jour!', '', 'success')
+              setTimeout(() => {
+                window.location = `/score/${formData2.tel}`
+              }, 2500);
+          
         } catch (err) {
           console.log("error")
         }
@@ -121,7 +128,7 @@ const Fidelites = () => {
                     <img src={promo} class="rounded float-center" width={'20%'} onClick= {() => reductionScore3("promo")}></img>
                 </div>
                 <div className="d-flex justify-content-center mt-1">
-                  <form onSubmit={console.log()}>
+                  <form onSubmit={onSubmit}>
                     <table className="mt-5" cellPadding="10">
                       <tr>
                         <td class="center" colSpan="3">
