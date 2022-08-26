@@ -1,158 +1,177 @@
 import React, {Fragment, useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import propTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
-import Appetizer from './Appetizer';
-import Maincourse from './Maincourse';
-import MenuItem from './MenuItem';
-import Dessert from './Dessert';
 import {connect} from 'react-redux';
 import {getAppetizers2} from '../../actions/menu';
 import {getMaincourses2} from '../../actions/menu';
 import {getDesserts2} from '../../actions/menu';
 import { getMenu } from '../../actions/menu';
-import dessert from '../../reducers/dessert';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import ReCAPTCHA from "react-google-recaptcha"
+import emailjs from "emailjs-com";
 
 let adresse = ''
 let nomClient = ''
 let telephone = ''
 let remarque = ''
+let verification = false
+
+
 
 function handleChange(e) {
   adresse = e.target.value;
-  console.log(adresse)
 }
+
 
 function handleChange2(e) {
   telephone = e.target.value;
-  console.log(telephone)
+ 
 }
 
 function handleChange3(e) {
   nomClient = e.target.value;
-  console.log(nomClient)
+  
 }
 
 function handleChange4(e) {
   remarque = e.target.value;
-  console.log(nomClient)
+}
+
+const templateParams = {
+  message: 'Nouvelle commande',
+  subject: 'Nouvelle commande'
+};
+
+function sendmail(){
+  emailjs.send("default_service","template_pdfyzlb", templateParams, 'lTYMi0Wf2Pqfcf-up');
 }
 
 
-const Order = (
 
+
+const Order = (
+    
     {
         getAppetizers2, appetizer: {appetizers, loadingAppetizer},
         getMaincourses2, maincourse: {maincourses, loadingMaincourse},
         getDesserts2, dessert: {desserts, loadingDessert},
-        getMenu, menu:{menus, loadingMenu}
+        getMenu, menu:{menus, loadingMenu},
+        
     }
     ) => {
-
+        
+      let [yes, setYes] = useState([2]);
+      function changement(){
+        verification = true
+        setYes(3)
+      }
+      function changement2(){
+        verification = false
+        setYes(4)
+      }
         const onSubmit = async (e, result) => {
-          e.preventDefault();  
-          const formData = new FormData();
-          const formData2 = new FormData();
-          const formData3 = new FormData();
+            e.preventDefault();  
+            const formData = new FormData();
+            const formData2 = new FormData();
+            const formData3 = new FormData();
 
-          let totalPrice=0;
-          
+            let totalPrice=0;
+            
 
-          for(let i=0;i<appetizers.length;i++){
-            formData.append('chk', (cartAppetizer[i].id+"|"+cartAppetizer[i].name+"|"+cartAppetizer[i].price+"|"+cartAppetizer[i].amount));
-            if(cartAppetizer[i].amount>0)
-              totalPrice=totalPrice+(parseInt(cartAppetizer[i].price*cartAppetizer[i].amount));
-          }
-
-          for(let i=0;i<maincourses.length;i++){
-            formData.append('chk', (cartMaincourse[i].id+"|"+cartMaincourse[i].name+"|"+cartMaincourse[i].price+"|"+cartMaincourse[i].amount));
-            if(cartMaincourse[i].amount>0)
-              totalPrice=totalPrice+(parseInt(cartMaincourse[i].price*cartMaincourse[i].amount));
-          }
-
-          for(let i=0;i<desserts.length;i++){
-            formData.append('chk', (cartDessert[i].id+"|"+cartDessert[i].name+"|"+cartDessert[i].price+"|"+cartDessert[i].amount));
-            if(cartDessert[i].amount>0)
-              totalPrice=totalPrice+(parseInt(cartDessert[i].price*cartDessert[i].amount));
-          }
-          
-          formData.append('total', totalPrice);
-          formData.append('remarque', remarque);
-          formData3.append('total', totalPrice);
-          formData.append('adresse', adresse)
-          formData2.append('adresse', adresse)
-          formData.append('telephone', telephone)
-          formData2.append('telephone', telephone)
-          formData3.append('telephone', telephone)
-          formData.append('nomClient', nomClient)
-          formData2.append('nomClient', nomClient)
-
-          Swal.fire({
-            title: "Êtes-vous sûr d'avoir terminé votre commande?",
-            showDenyButton: true,
-            confirmButtonText: 'Oui',
-            denyButtonText: `Non`,
-          }).then((result) = async result => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-              try {
-                const res = await axios.post('/api/clients', formData2, {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
-                });
-    
-                const id = res.data;
-              } catch (err) {
-                console.log(err);
-              }     
-              
-              try {
-                const res = await axios.post('/api/score', formData3, {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
-                });
-    
-                const id = res.data;
-              } catch (err) {
-                console.log(err);
-              }  
-    
-              try {
-                const res = await axios.post('/api/transaction', formData, {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
-                });
-    
-                const id = res.data;
-    
-              } catch (err) {
-                console.log(err);
-              }
-    
-              try {
-                const res = await axios.post('/api/transactionEnCours', formData, {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
-                });
-    
-                const id = res.data;
-    
-                window.location = `/print2/${res.data}`;
-              } catch (err) {
-                console.log(err);
-              }
-            } else if (result.isDenied) {
-    
+            for(let i=0;i<appetizers.length;i++){
+              formData.append('chk', (cartAppetizer[i].id+"|"+cartAppetizer[i].name+"|"+cartAppetizer[i].price+"|"+cartAppetizer[i].amount));
+              if(cartAppetizer[i].amount>0)
+                totalPrice=totalPrice+(parseInt(cartAppetizer[i].price*cartAppetizer[i].amount));
             }
-          })
 
-          
+            for(let i=0;i<maincourses.length;i++){
+              formData.append('chk', (cartMaincourse[i].id+"|"+cartMaincourse[i].name+"|"+cartMaincourse[i].price+"|"+cartMaincourse[i].amount));
+              if(cartMaincourse[i].amount>0)
+                totalPrice=totalPrice+(parseInt(cartMaincourse[i].price*cartMaincourse[i].amount));
+            }
+
+            for(let i=0;i<desserts.length;i++){
+              formData.append('chk', (cartDessert[i].id+"|"+cartDessert[i].name+"|"+cartDessert[i].price+"|"+cartDessert[i].amount));
+              if(cartDessert[i].amount>0)
+                totalPrice=totalPrice+(parseInt(cartDessert[i].price*cartDessert[i].amount));
+            }
+            
+            formData.append('total', totalPrice);
+            formData.append('remarque', remarque);
+            formData3.append('total', totalPrice);
+            formData.append('adresse', adresse)
+            formData2.append('adresse', adresse)
+            formData.append('telephone', telephone)
+            formData2.append('telephone', telephone)
+            formData3.append('telephone', telephone)
+            formData.append('nomClient', nomClient)
+            formData2.append('nomClient', nomClient)
+
+            Swal.fire({
+              title: "Êtes-vous sûr d'avoir terminé votre commande?",
+              showDenyButton: true,
+              confirmButtonText: 'Oui',
+              denyButtonText: `Non`,
+            }).then((result) = async result => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                sendmail()
+                try {
+                  const res = await axios.post('/api/clients', formData2, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                  });
+      
+                  const id = res.data;
+                } catch (err) {
+                  console.log(err);
+                }     
+                
+                try {
+                  const res = await axios.post('/api/score', formData3, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                  });
+      
+                  const id = res.data;
+                } catch (err) {
+                  console.log(err);
+                }  
+      
+                try {
+                  const res = await axios.post('/api/transaction', formData, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                  });
+      
+                  const id = res.data;
+      
+                } catch (err) {
+                  console.log(err);
+                }
+      
+                try {
+                  const res = await axios.post('/api/transactionEnCours', formData, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                  });
+      
+                  const id = res.data;
+
+      
+                  window.location = `/print2/${res.data}`;
+                } catch (err) {
+                  console.log(err);
+                }
+              } else if (result.isDenied) {
+      
+              }
+            })
         };
       
         const [minimizeChart, setMinimizeChart] = useState([]);
@@ -235,7 +254,7 @@ const Order = (
           //Set Total Price
           setTotalPrice(parseInt(totalPrice)+parseInt((cartDessert[index].price)));
         };
-      
+        
         const decreaseDessert = (event, index) => {
           event.preventDefault();
           if(cartDessert[index].amount>0){
@@ -250,7 +269,6 @@ const Order = (
 
     useEffect(()=>{
         getAppetizers2();
-
         if(!loadingAppetizer){
           for(let i=0;i<appetizers.length;i++){
             const appetizer = {
@@ -442,7 +460,7 @@ const Order = (
             <div className={"cart "+maximizeChart}>
                 <div className="row">
                     <div className="col-lg-4 col-md-4 col-sm-4 center mb-4"></div>
-                    <div className="col-lg-4 col-md-4 col-sm-4 center mb-4"><h3>My Cart</h3></div>
+                    <div className="col-lg-4 col-md-4 col-sm-4 center mb-4"><h3>Mon Panier</h3></div>
                     <div className="col-lg-4 col-md-4 col-sm-4 right mb-4">
                       <div className="lbl-x" onClick={(event) => setMaximizeChart('none')}>x</div>
                     </div>
@@ -482,7 +500,7 @@ const Order = (
 
                   <div class="input-group mb-3">
                       <input type="text" class="form-control" placeholder="nom" aria-label="Nom" aria-describedby="basic-addon1" onChange={handleChange3} required />
-                      <input type="text" class="form-control" maxLength={11} minLength={8} placeholder="numero" aria-label="Numero" aria-describedby="basic-addon1" onChange={handleChange2} required/>
+                      <input type="text" class="form-control" maxLength={11} minLength={8} placeholder="n° de téléphone" aria-label="Numero" aria-describedby="basic-addon1" onChange={handleChange2} required/>
 
                       <input width={"20%"}  type="text"  class="form-control" placeholder="adresse" aria-label="Adresse" aria-describedby="basic-addon1" onChange={handleChange} required/>
                       <input type="text" class="form-control" placeholder="remarque" aria-label="Remarque" aria-describedby="basic-addon1" onChange={handleChange4}/>
@@ -490,13 +508,17 @@ const Order = (
                     
                     <div className="col-lg-2"></div>
                     <div className="col-lg-8 center mb-4">
-                      <input
+                      <button disabled={!verification}
                         type='submit'
-                        value='PURCHASE'
-                        className='btn btn-primary mt-4'
-                      />
+                        class='btn btn-primary btn-lg btn-block'
+                      >ENVOYER</button>
                     </div>
-                    <div className="col-lg-2">
+                    <div class='fixed-right'>
+                      <ReCAPTCHA
+                        sitekey="6Leqz6ohAAAAAIZXIea5_MpDpBnF6-UyrCOw6pgz"
+                        onChange={changement}
+                        onExpired={changement2}
+                      />
                     </div>
                 </div>
             </div>

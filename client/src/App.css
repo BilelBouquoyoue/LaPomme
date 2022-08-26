@@ -676,6 +676,10 @@
       display: block;
       text-align: center;
     }
+
+    .bilel{
+      size: 100%
+    }
   
     .navbar ul {
       text-align: center;
@@ -790,6 +794,8 @@
       width: 100%;
     }
   }
+
+
 
   /* Extra large devices (large laptops and desktops, 1200px and up) */
   @media only screen and (min-width: 1200px) {
