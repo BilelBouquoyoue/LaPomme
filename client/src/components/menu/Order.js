@@ -116,7 +116,7 @@ const Order = (
             }).then((result) = async result => {
               /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {
-                sendmail()
+                
                 try {
                   const res = await axios.post('/api/clients', formData2, {
                     headers: {
