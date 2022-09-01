@@ -39,6 +39,26 @@ router.delete('/:id', async(req, res) => {
     }
 });
 
+router.delete('/ss/:tel', async(req, res) => {
+    try {
+        const client = await Client.find({telephone: req.params.tel});
+
+        if (!client) {
+            return res.status(404).json({ msg: 'Client non trouvé' });
+        }
+
+        await client.remove();
+
+        res.json({ msg: 'Client supprimé' });
+    } catch (err) {
+        console.error(err.message);
+
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'Client non trouvé' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
 
 
 

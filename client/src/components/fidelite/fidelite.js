@@ -121,15 +121,19 @@ const Fidelites = () => {
                     </div>
                 </div>
                 <br></br>
+                
                 <br></br>
                 <div className="d-flex justify-content-around">
                     <img src={vin} class="rounded float-left" width={'20%'} onClick= {() => reductionScore2("vin")}></img>
                     <img src={glace} class="rounded float-right" width={'20%'} onClick= {() => reductionScore("glace")}></img>
                     <img src={promo} class="rounded float-center" width={'20%'} onClick= {() => reductionScore3("promo")}></img>
                 </div>
+                <div className="m-2 center">
+                  <button class="btn btn-outline-warning btn-lg btn-block" onClick={() => {window.location = `/historique/${tel2.num}`}}>Historique</button>
+                </div>
                 <div className="d-flex justify-content-center mt-1 ">
                   <form onSubmit={onSubmit}>
-                    <table className="mt-5 bg-dark rounded" cellPadding="10" >
+                    <table className="mt-3 bg-dark rounded" cellPadding="10" >
                       <tr>
                         <td class="center" colSpan="3">
                           <h2>Numéro actuel du client : <b>{data.telephone}</b></h2>
@@ -150,7 +154,7 @@ const Fidelites = () => {
                           <input
                             type='submit'
                             value='Modifier'
-                            className='btn btn-primary btn-block mt-4'
+                            className='btn btn-primary btn-block mt-1'
                           />
                         </td>
                       </tr>
