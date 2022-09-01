@@ -116,7 +116,7 @@ const Order = (
             }).then((result) = async result => {
               /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {
-                
+                sendmail() //BILEL C'EST ICI QUE CA BUG ( la page ne recharge pas et n'envoi pas commande mais que le mail... t'es le meilleur répare ça demain)
                 try {
                   const res = await axios.post('/api/clients', formData2, {
                     headers: {

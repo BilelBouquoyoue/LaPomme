@@ -1,11 +1,15 @@
-import React, {Fragment, useState} from "react";
-import {Link} from 'react-router-dom';
+import React, {Fragment, useState, useEffect} from "react";
+import {Link, useHistory} from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import {logout, register} from '../../actions/auth';
 import Logo from '../../img/logo.png'
 
+
+
+
 const Navbar=({ auth: { isAuthenticated, loading }, logout })=>{
+  const history = useHistory()
   const authLinks=(
     <ul className="navbar-nav ml-auto">
       <li className="nav-item mr-5">
@@ -15,15 +19,21 @@ const Navbar=({ auth: { isAuthenticated, loading }, logout })=>{
         </Link>
       </li>
       <li className="nav-item mr-5">
-        <Link to='/transactionsEnCours'>
+        <Link onClick={ () => {history.push('/transactionsEnCours'); window.location.reload()}}>
           <i className="white fas fa-list"></i>{''}
           <span className="white hide-sm">&nbsp;&nbsp;Commandes</span>
         </Link>
       </li>
       <li className="nav-item mr-5">
-        <Link to='/transactions'>
+        <Link onClick={ () => {history.push('/transactions'); window.location.reload()}}>
           <i className="white fas fa-calculator "></i>{''}
           <span className="white hide-sm">&nbsp;&nbsp;Transactions</span>
+        </Link>
+      </li>
+      <li className="nav-item mr-5">
+        <Link onClick={ () => {history.push('/clients'); window.location.reload()}}>
+          <i className="white fas fa-child "></i>{''}
+          <span className="white hide-sm">&nbsp;&nbsp;Clients</span>
         </Link>
       </li>
       <li className="nav-item mr-5">

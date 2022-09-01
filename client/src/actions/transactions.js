@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import {setAlert} from './alert';
 import {
     GET_TRANSACTIONS,
@@ -10,9 +11,42 @@ import {
 } from './types';
 
 // Get posts
+export const getClients = () => async dispatch => {
+    try {
+        const res=await axios.get('/api/clients/');
+
+        dispatch({
+            type:GET_TRANSACTIONS,
+            payload:res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: TRANSACTION_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}
+
 export const getTransactions = () => async dispatch => {
     try {
         const res=await axios.get('/api/transaction/');
+
+        dispatch({
+            type:GET_TRANSACTIONS,
+            payload:res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: TRANSACTION_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}
+
+
+export const getTransactionsH = tel2 => async dispatch => {
+    try {
+        const res=await axios.get(`/api/transaction/historique/${tel2}`);
 
         dispatch({
             type:GET_TRANSACTIONS,

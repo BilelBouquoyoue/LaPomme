@@ -30,7 +30,7 @@ const AddMenu = () => {
     <Fragment>
       <div className="d-flex justify-content-center mt-5">
         <form onSubmit={onSubmit}>
-          <table className="mt-5" cellPadding="10">
+          <table className="mt-5 bg-dark rounded" cellPadding="10">
             <tr>
               <td class="center" colSpan="3">
                 <h2>Entrez le numéro du client</h2>
@@ -40,7 +40,7 @@ const AddMenu = () => {
               <td class="center" colSpan="4"></td>
             </tr>
             <tr>
-              <td>Numero</td>
+              <td>Numero de téléphone</td>
               <td>:</td>
               <td><input required value={numero} type="text" name="numero" onChange={e => onTextChange(e)} /></td>
             </tr>

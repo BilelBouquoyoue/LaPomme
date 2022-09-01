@@ -1,12 +1,6 @@
 import React, {Fragment, useEffect} from 'react';
-import propTypes from 'prop-types';
-import {Link} from 'react-router-dom';
 import Moment from 'react-moment';
 import {connect} from 'react-redux';
-import callButton2 from './fonction';
-import deleteCommande from './fonction';
-import axios from 'axios';
-import Swal from 'sweetalert2'
 
 
 

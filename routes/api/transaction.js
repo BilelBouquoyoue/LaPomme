@@ -177,6 +177,8 @@ router.get('/:id', async(req, res) => {
     }
 })
 
+
+
 // @route    Get transaction/id
 // @desc     Get items from single transaction
 // @access   Public
@@ -188,6 +190,17 @@ router.get('/print/:id', async(req, res) => {
         res.render('menu/print', {
             print,
         })
+    } catch (err) {
+        console.error(err)
+            //res.render('error/500')
+    }
+})
+
+router.get('/historique/:tel', async(req, res) => {
+    try {
+        const transaction = await Transaction.find({telephone: req.params.tel }).lean().sort({ date: -1 });
+        res.send(transaction);
+
     } catch (err) {
         console.error(err)
             //res.render('error/500')

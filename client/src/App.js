@@ -14,6 +14,8 @@ import Temp from './components/menu-form/Temp';
 import Menus from './components/menu/Menus';
 import Order from './components/menu/Order';
 import Transactions from './components/transaction/Transactions';
+import Historique from './components/transaction/HistoriqueC';
+import Clients from './components/transaction/Clients';
 import TransactionsEnCours from './components/transaction/TransactionsEnCours';
 import Menu from './components/menu/MenuItem';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -22,6 +24,7 @@ import Print2 from './components/transaction/Print2';
 import Fidelite from './components/fidelite/fidelite';
 import Recherche from './components/fidelite/chercheClient';
 import Recompense from './components/fidelite/recompFini';
+
 
 
 
@@ -69,6 +72,9 @@ const App = () => {
                                 <PrivateRoute exact path="/score/:num" component={Fidelite} />
                                 <PrivateRoute exact path="/menus" component={Menus} />
                                 <PrivateRoute exact path="/transactions" component={Transactions} />
+                                <PrivateRoute exact path="/historique/:num" component={Historique} />
+                                <Route path="/reload" render= {(props)=>window.location.reload()} />
+                                <PrivateRoute exact path="/clients" component={Clients} />
                                 <PrivateRoute exact path="/transactionsEnCours" component={TransactionsEnCours} />
                                 <PrivateRoute exact path="/menus/:id" component={Menu} />
                         </Switch>
